@@ -15,7 +15,7 @@ echo *The hacked version takes assets from both the CD and Floppy and
 echo. combines them to create an "ultimate" version. 
 echo. It also fixes many bugs.
 echo.
-choice /C:12345678 /N Please Choose:
+jchoice /C:12345678 /N Please Choose:
 
 if errorlevel = 8 goto quit
 if errorlevel = 7 goto HACK
@@ -27,7 +27,7 @@ if errorlevel = 2 goto EGASB
 if errorlevel = 1 goto EGACMS
 
 :EGACMS
-CONFIG -set "mididevice=default"
+
 CONFIG -set "sbtype=gb"
 CD EGA
 cls
@@ -36,7 +36,7 @@ cls
 goto quit
 
 :EGASB
-CONFIG -set "mididevice=default"
+
 CD EGA
 cls
 @SCIDUV SESOURCE.CFG
@@ -44,7 +44,7 @@ cls
 goto quit
 
 :EGAMT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 CD EGA
 cls
 @SCIDUV MESOURCE.CFG
@@ -52,7 +52,7 @@ cls
 goto quit
 
 :SB16
-CONFIG -set "mididevice=default"
+
 CD SQ4
 cls
 @sierra SESOURCE.CFG
@@ -60,7 +60,7 @@ cls
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 CD SQ4
 cls
 @sierra MESOURCE.CFG 
@@ -68,7 +68,7 @@ cls
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 CD SQ4
 cls
 @sierra GESOURCE.CFG 
@@ -76,7 +76,7 @@ cls
 goto quit
 
 :HACK
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 @echo off
 cd patch
 cls

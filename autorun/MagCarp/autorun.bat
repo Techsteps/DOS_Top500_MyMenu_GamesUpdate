@@ -11,7 +11,7 @@ echo.
 echo Note: MT32 Has no music in the intro. It appears to
 echo play properly in-game however.
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto network
@@ -20,11 +20,11 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 cd CARPET.CD
 del SNDSETUP.DAT
 del SNDSETUP.INF
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cd ..
 cls
 echo.
@@ -36,11 +36,11 @@ pause
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 cd CARPET.CD
 del SNDSETUP.DAT
 del SNDSETUP.INF
-copy .\mt32\*.*
+xcopy /Y .\mt32\*.* .\
 cd ..
 cls
 echo.
@@ -52,11 +52,11 @@ pause
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 cd CARPET.CD
 del SNDSETUP.DAT
 del SNDSETUP.INF
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cd ..
 cls
 echo.
@@ -68,11 +68,11 @@ pause
 goto quit
 
 :network
-CONFIG -set "mididevice=default"
+
 cd CARPET.CD
 del SNDSETUP.DAT
 del SNDSETUP.INF
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cd ..
 cls
 network

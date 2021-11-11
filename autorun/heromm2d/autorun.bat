@@ -7,7 +7,7 @@ echo Press 2 for The Price of Loyalty (Expansion Pack)
 echo Press 3 to play Network Multiplayer
 echo Press 4 to Quit
 echo.
-choice /C:1234 /N Please Choose:
+jchoice /C:1234 /N Please Choose:
 
 if errorlevel = 4 goto quit
 if errorlevel = 3 goto network
@@ -24,7 +24,7 @@ echo Press 3 for Heroes of Might and Magic II w/ Sound Canvas
 echo Press 4 for Heroes of Might and Magic II w/ CD Audio
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto HOMMCDA
@@ -34,11 +34,11 @@ if errorlevel = 1 goto HOMMSB16
 
 :HOMMSB16
 imgmount d ".\eXoDOS\heromm2d\CD\Heroes of Might and Magic 2.cue" -t cdrom
-CONFIG -set "mididevice=default"
+
 cd HERO2
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd SOUND
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 cls
 @HEROES2
@@ -46,11 +46,11 @@ goto quit
 
 :HOMMMT32
 imgmount d ".\eXoDOS\heromm2d\CD\Heroes of Might and Magic 2.cue" -t cdrom
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 cd HERO2
-copy .\mt32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cd SOUND
-copy .\mt32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cd ..
 cls
 @HEROES2
@@ -58,7 +58,7 @@ goto quit
 
 :HOMMCDA
 imgmount d ".\eXoDOS\heromm2d\CD\Heroes of Might and Magic 2.cue" -t cdrom
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 cd HERO2
 copy .\CDA\*.* .\
 cd SOUND
@@ -70,11 +70,11 @@ goto quit
 
 :HOMMSC55
 imgmount d ".\eXoDOS\heromm2d\CD\Heroes of Might and Magic 2.cue" -t cdrom
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 cd HERO2
-copy .\sc55\*.* .\
+xcopy /Y .\sc55\*.* .\ .\
 cd SOUND
-copy .\sc55\*.* .\
+xcopy /Y .\sc55\*.* .\ .\
 cd ..
 cls
 @HEROES2
@@ -90,7 +90,7 @@ echo Press 3 for The Price of Loyalty w/ Sound Canvas
 echo Press 4 for The Price of Loyalty w/ CD Audio
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto POLCDA
@@ -100,11 +100,11 @@ if errorlevel = 1 goto POLSB16
 
 :POLSB16
 imgmount d ".\eXoDOS\heromm2d\CD\Heroes of Might and Magic 2 - The Price of Loyalty.cue" -t cdrom
-CONFIG -set "mididevice=default"
+
 cd HEROES2
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd SOUND
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 cls
 @HEROES2
@@ -112,11 +112,11 @@ goto quit
 
 :POLMT32
 imgmount d ".\eXoDOS\heromm2d\CD\Heroes of Might and Magic 2 - The Price of Loyalty.cue" -t cdrom
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 cd HEROES2
-copy .\mt32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cd SOUND
-copy .\mt32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cd ..
 cls
 @HEROES2
@@ -124,7 +124,7 @@ goto quit
 
 :POLCDA
 imgmount d ".\eXoDOS\heromm2d\CD\Heroes of Might and Magic 2 - The Price of Loyalty.cue" -t cdrom
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 cd HEROES2
 copy .\CDA\*.* .\
 cd SOUND
@@ -136,11 +136,11 @@ goto quit
 
 :POLSC55
 imgmount d ".\eXoDOS\heromm2d\CD\Heroes of Might and Magic 2 - The Price of Loyalty.cue" -t cdrom
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 cd HEROES2
-copy .\sc55\*.* .\
+xcopy /Y .\sc55\*.* .\ .\
 cd SOUND
-copy .\sc55\*.* .\
+xcopy /Y .\sc55\*.* .\ .\
 cd ..
 cls
 @HEROES2

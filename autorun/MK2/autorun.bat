@@ -7,7 +7,7 @@ echo Press 2 for Mortal Kombat II w/ Gravis Ultrasound
 echo Press 3 for Mortal Kombat II w/ Roland
 echo Press 4 to Quit
 echo.
-choice /C:1234 /N Please Choose:
+jchoice /C:1234 /N Please Choose:
 
 if errorlevel = 4 goto quit
 if errorlevel = 3 goto MT32
@@ -17,7 +17,7 @@ if errorlevel = 1 goto SB
 :SB
 @cd mk2
 del CMOS.MK2
-copy .\SB16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cls
 mk2
 cls
@@ -38,7 +38,7 @@ goto quit
 :MT32
 @cd mk2
 del CMOS.MK2
-copy .\MT32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cls
 mk2
 cls

@@ -10,7 +10,7 @@ echo Press 5 for Secret Operations 2 w/ SoundBlaster
 echo Press 6 for Secret Operations 2 w/ MT-32
 echo Press 7 to quit
 echo.
-choice /C:1234567 /N Please Choose:
+jchoice /C:1234567 /N Please Choose:
 
 if errorlevel = 7 goto quit
 if errorlevel = 6 goto so2mt
@@ -22,8 +22,8 @@ if errorlevel = 1 goto wc2sb
 
 :wc2sb
 cd origin2
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 d:
 cls
@@ -32,8 +32,8 @@ goto menu
 
 :wc2mt
 cd origin2
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 cd ..
 d:
 cls
@@ -42,8 +42,8 @@ goto menu
 
 :so1sb
 cd origin2
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 d:
 cls
@@ -52,8 +52,8 @@ goto menu
 
 :so1mt
 cd origin2
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 cd ..
 d:
 cls
@@ -62,8 +62,8 @@ goto menu
 
 :so2sb
 cd origin2
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 d:
 cls
@@ -72,8 +72,8 @@ goto menu
 
 :so2mt
 cd origin2
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 cd ..
 d:
 cls

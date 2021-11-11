@@ -11,7 +11,7 @@ echo This game has a High res mode that can be activitaed by
 echo pressing R when in game. This will require increased cycles
 echo however, so follow this by pressing Ctrl-f12 one time.
 echo.
-choice /C:123 /N Please Choose:
+jchoice /C:123 /N Please Choose:
 
 if errorlevel = 3 goto quit
 if errorlevel = 2 goto SC55
@@ -19,25 +19,25 @@ rem if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 del SNDSETUP.INF
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cls
 @call THEME
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 del SNDSETUP.INF
-copy .\mt32\*.*
+xcopy /Y .\mt32\*.* .\
 cls
 @call THEME
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 del SNDSETUP.INF
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cls
 @call THEME
 goto quit

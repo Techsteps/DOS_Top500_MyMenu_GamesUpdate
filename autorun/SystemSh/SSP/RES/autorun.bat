@@ -10,24 +10,24 @@ echo Note: New games default to a low resolution. Once you start
 echo hit ESC, select VIDEO, VIDEO MODE, and then you can increase
 echo your resolution.
 echo.
-choice /C:123 /N Please Choose:
+jchoice /C:123 /N Please Choose:
 
 if errorlevel = 3 goto quit
 if errorlevel = 2 goto SC55
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 del CYB.CFG
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cls
 @CDSHOCK
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 del CYB.CFG
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cls
 @CDSHOCK
 goto quit

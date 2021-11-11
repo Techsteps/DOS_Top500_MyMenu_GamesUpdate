@@ -8,7 +8,7 @@ echo Press 2 for Wizardry VII w/ MT32
 echo Press 3 To Transfer Characters from Wizardry 6
 echo Press 4 to Quit
 echo.
-choice /C:1234 /N Please Choose:
+jchoice /C:1234 /N Please Choose:
 
 if errorlevel = 4 goto quit
 if errorlevel = 3 goto tran
@@ -51,7 +51,7 @@ rem if exist .\wizar6\*.dbs echo A Pre-Ending save game has been found. Press 2 
 rem echo Press R to Return to the Previous Menu
 echo.
 pause
-rem choice /C:12R /N Please Choose:
+rem jchoice /C:12R /N Please Choose:
 
 rem if errorlevel = 3 goto menu
 rem if errorlevel = 2 goto pre

@@ -8,7 +8,7 @@ echo Press 3 for Lands of Lore: Guardians of Destiny w/ Sound Canvas
 echo Press 4 for Lands of Lore: Guardians of Destiny w/ CD Audio
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto CDA
@@ -17,15 +17,15 @@ if errorlevel = 2 goto MPU401
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 del LOLSETUP.INI
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cls
 @LOLG
 goto quit
 
 :CDA
-CONFIG -set "mididevice=default"
+
 del LOLSETUP.INI
 copy .\CDA\*.*
 cls
@@ -33,7 +33,7 @@ cls
 goto quit
 
 :MPU401
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 del LOLSETUP.INI
 copy .\mpu401\*.*
 cls
@@ -41,9 +41,9 @@ cls
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 del LOLSETUP.INI
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cls
 @LOLG
 goto quit

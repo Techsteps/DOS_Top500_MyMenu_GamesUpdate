@@ -13,7 +13,7 @@ echo.
 echo Options 4 is unique in that it features limited speech samples
 echo not present with other configurations.
 echo.
-choice /C:1234567 /N Please Choose:
+jchoice /C:1234567 /N Please Choose:
 
 if errorlevel = 7 goto quit
 if errorlevel = 6 goto SC55CD
@@ -24,28 +24,28 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 cls
 @lords
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 cls
 @lords
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
-copy .\sc55\*.* .\
+mt32-pi -g -v
+xcopy /Y .\sc55\*.* .\ .\
 cls
 @lords
 goto quit
 
 :CD
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 CONFIG -SET "CYCLES=6000"
 cd ..
 cd lordscd
@@ -54,31 +54,31 @@ cls
 goto quit
 
 :SB16CD
-CONFIG -set "mididevice=default"
+
 CONFIG -SET "CYCLES=6000"
 cd ..
 cd lordscd
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cls
 @LORDS
 goto quit
 
 :MT32CD
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 CONFIG -SET "CYCLES=6000"
 cd ..
 cd lordscd
-copy .\mt32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cls
 @LORDS
 goto quit
 
 :SC55CD
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 CONFIG -SET "CYCLES=6000"
 cd ..
 cd lordscd
-copy .\sc55\*.* .\
+xcopy /Y .\sc55\*.* .\ .\
 cls
 @LORDS
 goto quit

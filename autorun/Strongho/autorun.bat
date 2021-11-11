@@ -9,25 +9,25 @@ echo.
 echo The game launches in a demo mode. Press ESC to
 echo exit the demo and go to the actual menu.
 echo.
-choice /C:123 /N Please Choose:
+jchoice /C:123 /N Please Choose:
 
 if errorlevel = 3 goto quit
 if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 cd STRONG.SAV
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 cls
 @STRONG
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 cd STRONG.SAV
-copy .\mt32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cd ..
 cls
 @STRONG

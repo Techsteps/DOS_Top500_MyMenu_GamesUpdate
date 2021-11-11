@@ -8,7 +8,7 @@ echo Press 3 for Star Trek: Judgement Rites CD w/ Sound Canvas
 echo Press 4 for Star Trek: Judgement Rites Collector's CD
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto CD2
@@ -17,32 +17,32 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 imgmount d ".\eXoDOS\stjudgec\cd\Star Trek Judgment Rites CD-RO.cue" -t iso
 cls
 @trekjr
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 imgmount d ".\eXoDOS\stjudgec\cd\Star Trek Judgment Rites CD-RO.cue" -t iso
 cls
 @trekjr
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
-copy .\sc55\*.* .\
+mt32-pi -g -v
+xcopy /Y .\sc55\*.* .\ .\
 imgmount d ".\eXoDOS\stjudgec\cd\Star Trek Judgment Rites CD-RO.cue" -t iso
 cls
 @trekjr
 goto quit
 
 :CD2
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 imgmount d ".\eXoDOS\stjudgec\cd\Star_Trek_Judgement_Rites_CD2.iso" -t iso
 d:
 cls

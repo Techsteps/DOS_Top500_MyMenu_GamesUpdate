@@ -9,13 +9,13 @@ echo Press 4 for Command & Conquer Hidden Campaign
 echo Press 5 for Network Multiplayer
 echo Press 6 to Quit
 echo.
-echo This game contains 3 discs. The choice above loads the required
+echo This game contains 3 discs. The jchoice above loads the required
 echo disc for that campaign. If you attempt to start a different
 echo campaign than the one you select here, you will have to hit
 echo ctrl-f4 to switch through the mounted CD's until you find the
 echo right one.
 echo.
-choice /C:123456 /N Please Choose:
+jchoice /C:123456 /N Please Choose:
 
 if errorlevel = 6 goto quit
 if errorlevel = 5 goto network

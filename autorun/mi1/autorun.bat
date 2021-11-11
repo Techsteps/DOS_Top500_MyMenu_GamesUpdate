@@ -12,7 +12,7 @@ echo Press 7 for The Secret of Monkey Island CD w/ CD Audio
 echo Press 8 for The Secret of Monkey Island CD w/ MT32 + Ultimate Talkie Edition
 echo Press 9 to Quit
 echo.
-choice /C:123456789 /N Please Choose:
+jchoice /C:123456789 /N Please Choose:
 
 if errorlevel = 9 goto quit
 if errorlevel = 8 goto talkie
@@ -25,7 +25,7 @@ if errorlevel = 2 goto gb
 if errorlevel = 1 goto TANDY
 
 :EGADLIB
-CONFIG -set "mididevice=default"
+
 c:
 cd cga
 cls
@@ -33,7 +33,7 @@ cls
 goto quit
 
 :TANDY
-CONFIG -set "mididevice=default"
+
 c:
 cd cga
 cls
@@ -41,7 +41,7 @@ cls
 goto quit
 
 :SB16
-CONFIG -set "mididevice=default"
+
 c:
 cd floppy
 cls
@@ -49,7 +49,7 @@ cls
 goto quit
 
 :EGAMT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 c:
 cd cga
 cls
@@ -57,7 +57,7 @@ cls
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 c:
 cd floppy
 cls
@@ -65,7 +65,7 @@ cls
 goto quit
 
 :gb
-CONFIG -set "mididevice=default"
+
 CONFIG -set "sbtype=gb"
 c:
 cd cga
@@ -74,14 +74,14 @@ cls
 goto quit
 
 :talkie
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 cd talkie
 cls
 @monkey r1
 goto quit
 
 :CDaudio
-CONFIG -set "mididevice=default"
+
 d:
 cd english
 cls

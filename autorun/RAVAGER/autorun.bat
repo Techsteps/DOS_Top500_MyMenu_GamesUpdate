@@ -6,7 +6,7 @@ echo Press 1 for Dark Sun II: Wake of the Ravager
 echo Press 2 to Transfer Characters from Dark Sun: Shattered Lands 
 echo Press 3 to Quit
 echo.
-choice /C:123 /N Please Choose:
+jchoice /C:123 /N Please Choose:
 
 if errorlevel = 3 goto quit
 if errorlevel = 2 goto TRAN

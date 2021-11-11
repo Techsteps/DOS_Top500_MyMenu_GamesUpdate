@@ -12,7 +12,7 @@ echo.
 echo Resolution can be increased in the options menu. If you choose to do
 echo this, you should also increase the cpu speed by pressing CTRL-F12 one time.
 echo.
-choice /C:123456 /N Please Choose:
+jchoice /C:123456 /N Please Choose:
 
 if errorlevel = 6 goto quit
 if errorlevel = 5 goto network
@@ -22,9 +22,9 @@ if errorlevel = 2 goto GRAVIS
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 cd HIOCTANE.CD\sound
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 cd ..
 cd HIOCTANE
@@ -33,7 +33,7 @@ cls
 goto quit
 
 :GRAVIS
-CONFIG -set "mididevice=default"
+
 cd HIOCTANE.CD\sound
 copy .\gus\*.* .\
 cd ..
@@ -44,9 +44,9 @@ cls
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 cd HIOCTANE.CD\sound
-copy .\mt32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cd ..
 cd ..
 cd HIOCTANE
@@ -55,9 +55,9 @@ cls
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 cd HIOCTANE.CD\sound
-copy .\sc55\*.* .\
+xcopy /Y .\sc55\*.* .\ .\
 cd ..
 cd ..
 cd HIOCTANE
@@ -66,9 +66,9 @@ cls
 goto quit
 
 :network
-CONFIG -set "mididevice=default"
+
 cd HIOCTANE.CD\sound
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 cd ..
 cls

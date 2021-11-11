@@ -7,7 +7,7 @@ echo Press 2 for Arkanoid II: Revenge of Doh w/ Game Blaster
 echo Press 3 for Arkanoid II: Revenge of Doh w/ Adlib
 echo Press 4 to Quit
 echo.
-choice /C:1234 /N Please Choose:
+jchoice /C:1234 /N Please Choose:
 
 if errorlevel = 4 goto quit
 if errorlevel = 3 goto ADLIB
@@ -15,7 +15,7 @@ if errorlevel = 2 goto GB
 if errorlevel = 1 goto TANDY
 
 :TANDY
-CONFIG -set "mididevice=default"
+
 CONFIG -set "sbtype=none"
 copy .\TANDY\*.* .\
 cls
@@ -29,7 +29,7 @@ cls
 goto quit
 
 :GB
-CONFIG -set "mididevice=default"
+
 CONFIG -set "sbtype=gb"
 copy .\GB\*.* .\
 cls
@@ -37,7 +37,7 @@ cls
 goto quit
 
 :ADLIB
-CONFIG -set "mididevice=default"
+
 CONFIG -set "sbtype=sb16"
 copy .\ADLIB\*.* .\
 cls

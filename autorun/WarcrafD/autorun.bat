@@ -8,7 +8,7 @@ echo Press 3 for WarCraft II: Battle Chest w/ CD Music
 echo Press 4 for Network Multiplayer
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto network
@@ -17,48 +17,48 @@ if errorlevel = 2 goto SC55
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 del WAR2.INI
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cd DRIVERS
 del MDI.INI
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cd ..
 cls
 @WAR2
 goto quit
 
 :CDA
-CONFIG -set "mididevice=default"
+
 del WAR2.INI
 copy .\cda\*.*
 cd DRIVERS
 del MDI.INI
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cd ..
 cls
 @WAR2
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 del WAR2.INI
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cd DRIVERS
 del MDI.INI
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cd ..
 cls
 @WAR2
 goto quit
 
 :network
-CONFIG -set "mididevice=default"
+
 del WAR2.INI
 copy .\cda\*.*
 cd DRIVERS
 del MDI.INI
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cd ..
 cls
 @network

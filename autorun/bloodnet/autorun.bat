@@ -9,7 +9,7 @@ echo Press 2 for BloodNet w/ MT-32
 echo Press 3 for BloodNet w/ Sound Canvas
 echo Press 4 to Quit
 echo.
-jchoice /C:1234 /N Please Choose:
+jjchoice /C:1234 /N Please Choose:
 
 if errorlevel = 4 goto quit
 if errorlevel = 3 goto SC55

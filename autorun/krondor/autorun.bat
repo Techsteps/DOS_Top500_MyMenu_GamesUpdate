@@ -10,7 +10,7 @@ echo Press 3 for Betrayal at Krondor w/ Sound Canvas
 echo Press 4 for Betrayal at Krondor w/ CD Audio
 echo Press 5 to Quit
 echo.
-jchoice /C:12345 /N Please Choose:
+jjchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto CDA
@@ -19,7 +19,7 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cls
 @krondor
 goto quit
@@ -34,7 +34,7 @@ cls
 
 :MT32
 mt32-pi -m -v
-copy .\mt32\*.* .\
+xcopy /Y .\mt32\*.* .\ .\
 cls
 @krondor
 goto quit
@@ -42,7 +42,7 @@ cls
 
 :SC55
 mt32-pi -g -v
-copy .\sc55\*.* .\
+xcopy /Y .\sc55\*.* .\ .\
 cls
 @krondor
 goto quit

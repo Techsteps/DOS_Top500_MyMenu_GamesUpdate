@@ -9,7 +9,7 @@ echo Press 4 to Erase the Current Character So You Can Create a New One
 echo Press 5 to Transfer a Character from a Previous Game
 echo Press 6 to Quit
 echo.
-choice /C:123456 /N Please Choose:
+jchoice /C:123456 /N Please Choose:
 
 if errorlevel = 6 goto quit
 if errorlevel = 5 goto TRAN
@@ -19,31 +19,31 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 CONFIG -set "mixer=49716"
 CONFIG -set "oplemu=nuked"
 CONFIG -set "oplrate=49716"
 CONFIG -set "oplmode=opl2"
 del CONFIG.U6
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cls
 @ULTIMA6
 goto quit
 cls
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 del CONFIG.U6
-copy .\mt32\*.*
+xcopy /Y .\mt32\*.* .\
 cls
 @ULTIMA6
 goto quit
 cls
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 del CONFIG.U6
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cls
 @ULTIMA6
 goto quit
@@ -78,7 +78,7 @@ echo Press 3 to Transfer from Ultima V
 echo Press 4 to Transfer from Ultima V Upgrade
 echo Press 5 to Return to the Previous Menu
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto menu
 if errorlevel = 4 goto 5upg

@@ -11,7 +11,7 @@ echo.
 echo VGA is 256 Colors in 320x200
 echo EGA is 16 Colors in 640x480
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto MT32v
@@ -20,28 +20,28 @@ if errorlevel = 2 goto SB16v
 if errorlevel = 1 goto SB16e
 
 :SB16e
-CONFIG -set "mididevice=default"
+
 copy .\sb16_e\*.* .\
 cls
 @STARTREK
 goto quit
 
 :SB16v
-CONFIG -set "mididevice=default"
+
 copy .\sb16_v\*.* .\
 cls
 @STARTREK
 goto quit
 
 :MT32e
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 copy .\mt32_e\*.* .\
 cls
 @STARTREK
 goto quit
 
 :MT32v
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 copy .\mt32_v\*.* .\
 cls
 @STARTREK

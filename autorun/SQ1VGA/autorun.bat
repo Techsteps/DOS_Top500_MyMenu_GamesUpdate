@@ -12,7 +12,7 @@ echo Press 7 for Space Quest I: The Sarien Encounter EGA w/ MT32
 echo Press 8 for Space Quest I: The Sarien Encounter EGA w/ Sound Canvas
 echo Press 9 to Quit
 echo.
-choice /C:123456789 /N Please Choose:
+jchoice /C:123456789 /N Please Choose:
 
 if errorlevel = 9 goto quit
 if errorlevel = 8 goto SC55EGA
@@ -25,32 +25,32 @@ if errorlevel = 2 goto SB
 if errorlevel = 1 goto CMS
 
 :CMS
-CONFIG -set "mididevice=default"
+
 CONFIG -set "sbtype=gb"
 @SCIDHUV cms.cfg
 cls
 goto quit
 
 :SB
-CONFIG -set "mididevice=default"
+
 @SCIDHUV sesource.cfg
 cls
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 @SCIDHUV mesource.cfg
 cls
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 @SCIDHUV gesource.cfg
 cls
 goto quit
 
 :CMSEGA
-CONFIG -set "mididevice=default"
+
 CONFIG -set "sbtype=gb"
 CD EGA
 @SCIDUV cms.cfg
@@ -58,21 +58,21 @@ cls
 goto quit
 
 :SBEGA
-CONFIG -set "mididevice=default"
+
 CD EGA
 @SCIDUV sesource.cfg
 cls
 goto quit
 
 :MT32EGA
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 CD EGA
 @SCIDUV mesource.cfg
 cls
 goto quit
 
 :SC55EGA
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 CD EGA
 @SCIDUV gesource.cfg
 cls

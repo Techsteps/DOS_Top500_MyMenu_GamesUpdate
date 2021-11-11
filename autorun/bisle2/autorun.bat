@@ -13,7 +13,7 @@ echo then go into Effects/Music. Change Music to MEDIUM and Effects to
 echo LOUD. Once you create a save game, these options will be saved for
 echo future sessions.
 echo.
-choice /C:1234 /n Please Choose:
+jchoice /C:1234 /n Please Choose:
 
 if errorlevel = 4 goto end
 if errorlevel = 3 goto network
@@ -37,10 +37,10 @@ goto menu2
 :network
 cls
 imgmount d ".\eXoDOS\bisle2\cd\BATTLEISLE2.cue" -t cdrom
-CONFIG -set "mididevice=default"
+
 cd BLUEBYTE
 cd BI2
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
 cd ..
 network
@@ -55,7 +55,7 @@ echo Press 2 for Battle Isle 2 w/ MT-32
 echo Press 3 for Battle Isle 2 w/ Sound Canvas
 echo Press 4 to Quit
 echo.
-choice /C:1234 /N Please Choose:
+jchoice /C:1234 /N Please Choose:
 
 if errorlevel = 4 goto quit
 if errorlevel = 3 goto SC55
@@ -63,22 +63,22 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 cls
 @call BI2
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 cls
 @call BI2
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
-copy .\mt32\*.* .\
+mt32-pi -g -v
+xcopy /Y .\mt32\*.* .\ .\
 cls
 @call BI2
 goto quit

@@ -10,7 +10,7 @@ echo Press 5 to Quit
 echo.
 echo The demo contains a few exclusive levels
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto demo
@@ -19,22 +19,22 @@ if errorlevel = 2 goto SB16
 if errorlevel = 1 goto TANDY
 
 :TANDY
-CONFIG -set "mididevice=default"
+
 copy .\tandy\*.* .\
 cls
 @L2
 goto quit
 
 :SB16
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 cls
 @L2
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 cls
 @L2
 goto quit

@@ -14,7 +14,7 @@ echo 2. AGI easter eggs
 echo 3. Early SCI detailed backgrounds (later SCI were cut down)
 echo 4. All patches from the latest SCI version (1.006.004)
 echo. 
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto epi3
@@ -23,14 +23,14 @@ if errorlevel = 2 goto SCIMT32
 if errorlevel = 1 goto SCISB
 
 :SCISB
-config -set "mididevice=default"
+
 copy .\cfg\RESOURCE.SB RESOURCE.CFG
 @sierra
 cls
 goto quit
 
 :SCIMT32
-config -set "mididevice=mt32"
+mt32-pi -m -v
 copy .\cfg\RESOURCE.M32 RESOURCE.CFG
 @sierra
 cls

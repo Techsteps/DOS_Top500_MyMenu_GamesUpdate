@@ -8,7 +8,7 @@ echo Press 3 for Eye of the Beholder III w/ Sound Canvas
 echo Press 4 to Transfer Characters from Eye of the Beholder 2
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto TRAN
@@ -17,25 +17,25 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 del SOUND.CFG
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cls
 call eye
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 del SOUND.CFG
-copy .\mt32\*.*
+xcopy /Y .\mt32\*.* .\
 cls
 call eye
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 del SOUND.CFG
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cls
 call eye
 goto quit

@@ -6,7 +6,7 @@ echo Press 1 for Ultima III: Exodus
 echo Press 2 for Sosaria Mod (Lands of Lord British)
 echo Press 3 to Quit
 echo.
-choice /C:123 /N Please Choose:
+jchoice /C:123 /N Please Choose:
 
 if errorlevel = 3 goto quit
 if errorlevel = 2 goto modvideo
@@ -23,7 +23,7 @@ echo Press 4 for EGA Alternate (16-color)
 echo Press 5 for VGA (256-color)
 echo Press 6 to Quit
 echo.
-choice /C:123456 /N Please Choose:
+jchoice /C:123456 /N Please Choose:
 
 if errorlevel = 6 goto quit
 if errorlevel = 5 goto VGA
@@ -75,7 +75,7 @@ echo Press 4 for EGA Alternate (16-color)
 echo Press 5 for VGA (256-color)
 echo Press 6 to Quit
 echo.
-choice /C:123456 /N Please Choose:
+jchoice /C:123456 /N Please Choose:
 
 if errorlevel = 6 goto quit
 if errorlevel = 5 goto VGAM
@@ -125,7 +125,7 @@ echo Press 2 for w/ MT32
 echo Press 3 for w/ Sound Canvas
 echo Press 4 to Quit
 echo.
-choice /C:1234 /N Please Choose:
+jchoice /C:1234 /N Please Choose:
 
 if errorlevel = 4 goto quit
 if errorlevel = 3 goto SC55
@@ -133,36 +133,36 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 del MIDPAK.AD
 del MIDPAK.ADV
 del MIDPAK.COM
 del SC32MPU.ADD
-copy .\sb16\*.*
+xcopy /Y .\sb16\*.* .\
 cls
 ultima3.com
 cls
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 del MIDPAK.AD
 del MIDPAK.ADV
 del MIDPAK.COM
 del SC32MPU.ADD
-copy .\mt32\*.*
+xcopy /Y .\mt32\*.* .\
 cls
 ultima3.com
 cls
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 del MIDPAK.AD
 del MIDPAK.ADV
 del MIDPAK.COM
 del SC32MPU.ADD
-copy .\sc55\*.*
+xcopy /Y .\sc55\*.* .\
 cls
 ultima3.com
 cls

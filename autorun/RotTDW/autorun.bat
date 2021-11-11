@@ -8,7 +8,7 @@ echo Press 3 for Rise of the Triad w/ Sound Canvas
 echo Press 4 to play Network Multiplayer
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto network
@@ -18,8 +18,8 @@ if errorlevel = 1 goto SB16
 
 :SB16
 cd ROTT
-copy .\sb16\*.* .\
-CONFIG -set "mididevice=default"
+xcopy /Y .\sb16\*.* .\ .\
+
 cls
 @ROTT
 goto quit
@@ -27,24 +27,24 @@ goto quit
 :GUS
 cd ROTT
 copy .\gus\*.* .\
-CONFIG -set "mididevice=default"
+
 cls
 @ROTT
 goto quit
 
 :SC55
 cd ROTT
-copy .\sc55\*.* .\
-CONFIG -set "mididevice=fluidsynth"
+xcopy /Y .\sc55\*.* .\ .\
+mt32-pi -g -v
 cls
 @ROTT
 goto quit
 
 :network
 cd ROTT
-copy .\sb16\*.* .\
+xcopy /Y .\sb16\*.* .\ .\
 cd ..
-CONFIG -set "mididevice=default"
+
 cls
 @network
 goto quit

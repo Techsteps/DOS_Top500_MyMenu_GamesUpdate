@@ -8,7 +8,7 @@ echo Press 3 for Out of This World CD w/ SoundBlaster
 echo Press 4 for Out of This World CD w/ MT-32
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto MT32
@@ -18,32 +18,32 @@ if errorlevel = 1 goto FSB16
 
 :FSB16
 CD Floppy
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 cls
 @World
 goto quit
 
 :FMT32
 CD Floppy
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 cls
 @World
 goto quit
 
 :SB16
 CD WORLD
-CONFIG -set "mididevice=default"
-copy .\sb16\*.* .\
+
+xcopy /Y .\sb16\*.* .\ .\
 cls
 @World
 goto quit
 
 :MT32
 CD WORLD
-CONFIG -set "mididevice=mt32"
-copy .\mt32\*.* .\
+mt32-pi -m -v
+xcopy /Y .\mt32\*.* .\ .\
 cls
 @World
 goto quit

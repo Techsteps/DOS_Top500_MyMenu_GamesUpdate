@@ -8,7 +8,7 @@ echo Press 3 for The Incredible Machine 2 w/ Sound Canvas
 echo Press 4 for The Incredible Machine 2 w/ CD Audio
 echo Press 5 to Quit
 echo.
-choice /C:12345 /N Please Choose:
+jchoice /C:12345 /N Please Choose:
 
 if errorlevel = 5 goto quit
 if errorlevel = 4 goto CDA
@@ -17,7 +17,7 @@ if errorlevel = 2 goto MT32
 if errorlevel = 1 goto SB16
 
 :SB16
-CONFIG -set "mididevice=default"
+
 copy sesource.cfg resource.cfg
 imgmount -u d
 cls
@@ -25,7 +25,7 @@ cls
 goto quit
 
 :MT32
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 copy mesource.cfg resource.cfg
 imgmount -u d
 cls
@@ -33,7 +33,7 @@ cls
 goto quit
 
 :SC55
-CONFIG -set "mididevice=fluidsynth"
+mt32-pi -g -v
 copy gesource.cfg resource.cfg
 imgmount -u d
 cls
@@ -41,7 +41,7 @@ cls
 goto quit
 
 :CDA
-CONFIG -set "mididevice=mt32"
+mt32-pi -m -v
 copy cesource.cfg resource.cfg
 cls
 @tim2
