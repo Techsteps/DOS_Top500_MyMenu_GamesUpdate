@@ -1,1 +1,7 @@
-
+Created dev environment
+Added repositories
+Created new VHD git cloned Flynn's Mymenu repo and copied entire Top500 into -Testing directory
+Extracted all CD folders for import into AO486/cd/
+Removed all CD folders from Top500 game folders
+Extracted all run.bat files and renamed to autorun.bat
+Find/Replace all lines in autorun.bat files for SB/MT32/SC5
