@@ -5,3 +5,6 @@ Extracted all CD folders for import into AO486/cd/
 Removed all CD folders from Top500 game folders
 Extracted all run.bat files and renamed to autorun.bat
 Find/Replace all lines in autorun.bat files for SB/MT32/SC5
+Created 'tofix' document to keep workflow moving instead of stopping every time for each game
+Continued updates to autoruns
+
