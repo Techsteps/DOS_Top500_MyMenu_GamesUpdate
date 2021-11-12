@@ -16,14 +16,14 @@ if errorlevel = 1 goto SB16
 
 :SB16
 
-xcopy /Y .\sb16\*.* .\ .\
+xcopy /Y .\sb16\*.* .\
 cls
 @call GENIE
 goto quit
 
 :SC55
 mt32-pi -g -v
-xcopy /Y .\sc55\*.* .\ .\
+xcopy /Y .\sc55\*.* .\
 cls
 @call GENIE
 goto quit

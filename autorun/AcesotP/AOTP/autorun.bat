@@ -14,14 +14,14 @@ if errorlevel = 1 goto SB16
 
 :SB16
 
-xcopy /Y .\sb16\*.* .\ .\
+xcopy /Y .\sb16\*.* .\
 cls
 @call AOTPCD
 goto quit
 
 :MT32
 mt32-pi -m -v
-xcopy /Y .\mt32\*.* .\ .\
+xcopy /Y .\mt32\*.* .\
 cls
 @call AOTPCD
 goto quit
